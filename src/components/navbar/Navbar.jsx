@@ -7,21 +7,25 @@ import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutline
 import ListOutlinedIcon from '@mui/icons-material/ListOutlined';
 import image from "./image.jpg"
 import "./Navbar.scss"
+import React, { useContext, useState } from 'react'
+import { DarkModeContext } from '../../context/darkModeContext'
 
 function Navbar() {
+  const { dispatch } = useContext(DarkModeContext);
+
   return (
     <div className="navbar">
       <div className="wrapper">
         <div className="search">
           <input type="text" placeholder="Search..." />
-          <SearchOutlinedIcon /> 
+          <SearchOutlinedIcon />
         </div>
         <div className="items">
           <div className="item">
             <LanguageOutlinedIcon className="icon" /> English
           </div>
           <div className="item">
-            <DarkModeOutlinedIcon className="icon" />
+            <DarkModeOutlinedIcon className="icon" onClick={() => dispatch({ type: "TOGGLE" })} />
           </div>
           <div className="item">
             <FullscreenExitOutlinedIcon className="icon" />
